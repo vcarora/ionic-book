@@ -1,0 +1,33 @@
+<!-- <ngx-extended-pdf-viewer
+  [src]="b4"
+  backgroundColor="#ffffff"
+  useBrowserLocale="true"
+  [height]="'93vh'"
+  [handTool]="true"
+  [showHandToolButton]="true"
+  [pageViewMode]="'single'"
+>
+</ngx-extended-pdf-viewer> -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{chapterName}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ng-container *ngIf="!isLoading">
+<div>text -| {{err?.message}} |-text</div>
+
+    <ngx-extended-pdf-viewer
+      [src]="b4"
+      [height]="'667px'"
+      backgroundColor="#ffffff"
+      [mobileFriendlyZoom]="'100%'"
+      [showSecondaryToolbarButton]="false"
+    >
+    </ngx-extended-pdf-viewer>
+  </ng-container>
+  <ion-spinner class="spinner" *ngIf="isLoading"></ion-spinner>
+</ion-content>

@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Concept of Physics {{book === 'vol1' ? 'Vol. 1' : 'Vol. 2'}}</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="isDeleteAllOpen = true">
+        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+<ion-content class="ion-padding">
+  <ng-container *ngIf="book === 'vol1'">
+    <ng-container *ngFor="let chapter of tempVol1Chapters;let i = index">
+      <ion-card>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-nav-link router-direction="forward" [component]="chapterComponent" [componentProps]="{ chapterCode: chapter.code,chapterName : chapter.name}">
+              <ion-card-header>
+                <ion-card-subtitle><span>{{i+1}}. </span>{{chapter.name}}</ion-card-subtitle>
+              </ion-card-header>
+            </ion-nav-link>
+            </ion-col>
+            <ion-col size="auto" *ngIf="!chapter.downloaded">
+              <ion-nav-link router-direction="forward" [component]="chapterComponent" [componentProps]="{ chapterCode: chapter.code,chapterName : chapter.name}">
+              <ion-icon name="arrow-down-circle"></ion-icon>
+            </ion-nav-link>
+            </ion-col>
+            <ion-col size="auto" *ngIf="chapter.downloaded">
+              <ion-icon (click)="openDeleteAlert(true,chapter.code)" name="trash"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+
+    </ng-container>
+  </ng-container>
+  <ng-container *ngIf="book === 'vol2'">
+    <ng-container *ngFor="let chapter of tempVol2Chapters;let i = index">
+      <ion-card>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-nav-link router-direction="forward" [component]="chapterComponent" [componentProps]="{ chapterCode: chapter.code,chapterName : chapter.name}">
+              <ion-card-header>
+                <ion-card-subtitle><span>{{i+23}}. </span>{{chapter.name}}</ion-card-subtitle>
+              </ion-card-header>
+            </ion-nav-link>
+            </ion-col>
+            <ion-col size="auto" *ngIf="!chapter.downloaded">
+              <ion-nav-link router-direction="forward" [component]="chapterComponent" [componentProps]="{ chapterCode: chapter.code,chapterName : chapter.name}">
+              <ion-icon name="arrow-down-circle"></ion-icon>
+            </ion-nav-link>
+            </ion-col>
+            <ion-col size="auto" *ngIf="chapter.downloaded">
+              <ion-icon (click)="openDeleteAlert(true,chapter.code)" name="trash"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+    </ng-container>
+  </ng-container>
+<ion-alert
+  [isOpen]="isDeleteOpen"
+  header="This will delete the downloaded chapter!"
+  [buttons]="alertButtons"
+  (didDismiss)="openDeleteAlert(false)"
+></ion-alert>
+
+<ion-alert
+  [isOpen]="isDeleteAllOpen"
+  header="Are your Sure?"
+  subHeader="You want to delete all downloaded chapters!"
+  [buttons]="deleteAllAlertButtons"
+  (didDismiss)="isDeleteAllOpen = false"
+></ion-alert>
+</ion-content>
