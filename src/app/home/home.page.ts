@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { NavController } from '@ionic/angular';
+import { NavController, ToastController } from '@ionic/angular';
+import { AdmobAds, BannerPosition, BannerSize } from "capacitor-admob-ads";
+
 
 @Component({
   selector: 'app-home',
@@ -10,14 +12,31 @@ import { NavController } from '@ionic/angular';
 export class HomePage {
 
   component = DashboardComponent;
-  constructor(private navCntrl : NavController) {}
-
-  // openChaptersList(book : string){
-  //   if(book === 'vol1'){
-  //     this.navCntrl.push(DashboardComponent,)
-  //   }
-  // }
+  isAdLoaded : boolean = false;
+  constructor(private navCntrl : NavController,private toastController: ToastController) {}
   ngOnInit(){
   }
 
+  showBanner(){
+    if(!this.isAdLoaded){
+      AdmobAds.showBannerAd({ adId: "ca-app-pub-988995xxxxxxxxx/00000000", 
+        isTesting: false, 
+        adSize: BannerSize.BANNER,
+        adPosition: BannerPosition.BOTTOM }).then(() => {
+        this.isAdLoaded = true;
+     }).catch(err => {
+       this.isAdLoaded = false
+     });
+    }  
+  }
+
+  async displayToast(s : any) {
+    const toast = await this.toastController.create({
+      message: s,
+      duration: 2500,
+      position: 'middle',
+    });
+
+    await toast.present();
+  }
 }

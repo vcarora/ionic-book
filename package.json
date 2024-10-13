@@ -30,6 +30,7 @@
     "@ionic/angular": "^8.0.0",
     "@ionic/storage-angular": "^4.0.0",
     "angular-pdf": "^2.0.0",
+    "capacitor-admob-ads": "^5.0.0",
     "cordova-android": "13.0.0",
     "cordova-promise-polyfill": "0.0.2",
     "ionicons": "^7.0.0",

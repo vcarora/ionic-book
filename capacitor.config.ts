@@ -1,8 +1,8 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'ionic-app-base',
+  appId: 'com.vc.physics12class',
+  appName: 'HC Verma XII',
   webDir: 'www',
   cordova: {
     preferences: {

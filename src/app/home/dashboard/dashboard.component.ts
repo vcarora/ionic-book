@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NavParams } from '@ionic/angular';
+import { NavParams, ToastController } from '@ionic/angular';
 import { ChaptersComponent } from '../chapters/chapters.component';
 import { StorageService } from 'src/app/services/storage.service';
+import { AdmobAds, BannerPosition, BannerSize } from "capacitor-admob-ads";
 
 @Component({
   selector: 'app-dashboard',
@@ -13,9 +14,8 @@ export class DashboardComponent  implements OnInit {
   book : string = 'vol1';
   storedKeys : string[] = [];
 
-  constructor(private navParams: NavParams, private storage : StorageService) {
+  constructor(private navParams: NavParams, private storage : StorageService, private toastController: ToastController) {
     this.book = this.navParams.get('book')
-    console.log('this.navParams.get): ', this.navParams.get('book'));
    }
    chapterComponent = ChaptersComponent;
    
@@ -108,7 +108,6 @@ export class DashboardComponent  implements OnInit {
     this.storage.init()
     this.storage.getAllFromStorage().subscribe({
       next : data => {
-        console.log('data: ', data);
         if(data.length>0){
           if(this.book === 'vol1'){
             this.tempVol1Chapters = this.vol1Chapters.map(c =>{
@@ -136,11 +135,8 @@ export class DashboardComponent  implements OnInit {
           this.storedKeys = data
         }
       },
-      error : err => console.error(err)
-    })
-      
-    console.log('this.storedKeys: ', this.storedKeys);
-  
+      error : err => {}
+    })      
   }
 
   openDeleteAlert(isDelete : boolean, bookCode? : string){
@@ -186,6 +182,38 @@ export class DashboardComponent  implements OnInit {
       this.tempVol2Chapters = this.vol2Chapters
     }
   }
+
+  async displayToast(s : any) {
+    const toast = await this.toastController.create({
+      message: s,
+      duration: 2500,
+      position: 'middle',
+    });
+
+    await toast.present();
+  }
+
+  showBanner(){
+  
+    AdmobAds.showBannerAd({ adId: "ca-app-pub-9889950xxxxxxxx/00000000", isTesting: false, adSize: BannerSize.BANNER, adPosition: BannerPosition.BOTTOM }).then(() => {
+   }).catch(err => {
+   });
+  }
+
+  loadInterAd(){
+    AdmobAds.loadInterstitialAd({ adId: "ca-app-pub-3940256099942544/1033173712", isTesting: true }).then(() => {
+    
+   }).catch(err => {
+     
+   });
+  }
+
+  showInterAd(){
+    AdmobAds.showInterstitialAd().then(()=>{
+    }).catch(err => {
+   });
+  }
+  
 }
 
  

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NavParams, ToastController } from '@ionic/angular';
-import { Storage } from '@ionic/storage-angular';
 import { BookDataService } from 'src/app/services/book-data.service';
 import { StorageService } from 'src/app/services/storage.service';
 
@@ -20,7 +19,6 @@ export class ChaptersComponent implements OnInit {
      private storage: StorageService, private toastController: ToastController) {
     this.chapter = this.navParams.get('chapterCode')
     this.chapterName = this.navParams.get('chapterName')
-    console.log('this.navParams.get): ', this.navParams.get('chapterCode'));
   }
 
   ngOnInit() {
@@ -55,7 +53,6 @@ export class ChaptersComponent implements OnInit {
       },
       error : err => {
         this.isLoading = false;
-        console.log(err)
         this.err = err
         this.displayToast()
       }

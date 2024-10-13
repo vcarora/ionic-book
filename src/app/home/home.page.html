@@ -5,7 +5,8 @@
 </ion-header>
 <ion-content fullscreen="true" class="ion-padding">
     <ion-card>
-  <ion-nav-link router-direction="forward" [component]="component" [componentProps]="{ book: 'vol1' }">
+  <ion-nav-link router-direction="forward" [component]="component" [componentProps]="{ book: 'vol1' }"
+  (click)="showBanner()">
 
       <ion-grid>
         <ion-row>
@@ -25,7 +26,8 @@
 
     </ion-card>
     <ion-card>
-      <ion-nav-link router-direction="forward" [component]="component" [componentProps]="{ book: 'vol2' }">
+      <ion-nav-link router-direction="forward" [component]="component" [componentProps]="{ book: 'vol2' }"
+      (click)="showBanner()">
 
       <ion-grid>
         <ion-row>
