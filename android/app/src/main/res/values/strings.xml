@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">HC Verma Physics XII</string>
-    <string name="title_activity_main">HC Verma Physics XII</string>
+    <string name="app_name">HC Verma XII</string>
+    <string name="title_activity_main">HC Verma XII</string>
     <string name="package_name">com.vc.physics12class</string>
     <string name="custom_url_scheme">com.vc.physics12class</string>
 </resources>

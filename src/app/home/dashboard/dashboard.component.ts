@@ -62,14 +62,15 @@ export class DashboardComponent  implements OnInit {
     {code : 'HC36', name : 'Permanent Magnets', downloaded : false},
     {code : 'HC37', name : 'Magnetic Properties of Matter', downloaded : false},
     {code : 'HC38', name : 'Electromagnetic Induction', downloaded : false},
-    {code : 'HC39', name : 'Electromagnetic Waves', downloaded : false},
-    {code : 'HC40', name : 'Electric Current through Gases', downloaded : false},
-    {code : 'HC41', name : 'Photoelectric Effect and Wave Particle Duality', downloaded : false},
-    {code : 'HC42', name : "Bohr's Model and Physics of Atom", downloaded : false},
-    {code : 'HC43', name : 'X-rays', downloaded : false},
-    {code : 'HC44', name : 'Semiconductors and Semiconductor Devices', downloaded : false},
-    {code : 'HC45', name : 'The Nucleus', downloaded : false},
-    {code : 'HC46', name : 'The Special Theory of Relativity', downloaded : false}
+    {code : 'HC39', name : 'Alternating Current', downloaded : false},
+    {code : 'HC40', name : 'Electromagnetic Waves', downloaded : false},
+    {code : 'HC41', name : 'Electric Current through Gases', downloaded : false},
+    {code : 'HC42', name : 'Photoelectric Effect and Wave Particle Duality', downloaded : false},
+    {code : 'HC43', name : "Bohr's Model and Physics of Atom", downloaded : false},
+    {code : 'HC44', name : 'X-rays', downloaded : false},
+    {code : 'HC45', name : 'Semiconductors and Semiconductor Devices', downloaded : false},
+    {code : 'HC46', name : 'The Nucleus', downloaded : false},
+    {code : 'HC47', name : 'The Special Theory of Relativity', downloaded : false}
    ];
    tempVol1Chapters : Book[] = this.vol1Chapters;
    tempVol2Chapters : Book[] = this.vol2Chapters;
@@ -195,7 +196,7 @@ export class DashboardComponent  implements OnInit {
 
   showBanner(){
   
-    AdmobAds.showBannerAd({ adId: "ca-app-pub-9889950xxxxxxxx/00000000", isTesting: false, adSize: BannerSize.BANNER, adPosition: BannerPosition.BOTTOM }).then(() => {
+    AdmobAds.showBannerAd({ adId: "ca-app-pub-3940256099942544/9214589741", isTesting: true, adSize: BannerSize.BANNER, adPosition: BannerPosition.BOTTOM }).then(() => {
    }).catch(err => {
    });
   }

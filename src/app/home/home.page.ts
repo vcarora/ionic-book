@@ -19,7 +19,7 @@ export class HomePage {
 
   showBanner(){
     if(!this.isAdLoaded){
-      AdmobAds.showBannerAd({ adId: "ca-app-pub-988995xxxxxxxxx/00000000", 
+      AdmobAds.showBannerAd({ adId: "ca-app-pub-3940256099942544/9214589741", 
         isTesting: false, 
         adSize: BannerSize.BANNER,
         adPosition: BannerPosition.BOTTOM }).then(() => {
